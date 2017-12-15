@@ -51,7 +51,7 @@ class UiPlugin(octoprint.plugin.SettingsPlugin,
 
 
 __plugin_name__ = "Controlinatnor 5000"
-__plugin_description__ = "The Controlinator 5000 is the premiere premium plugin for all your control needs."
+__plugin_description__ = "The Controlinator 5000 takes no prisoners. Lock up your hotends, strap down your spools, all safeties are off."
 
 def __plugin_load__():
 	global __plugin_implementation__
