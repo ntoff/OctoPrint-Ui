@@ -8,10 +8,12 @@
 #sidebar_plugin_ui_wrapper .side-panel {
   text-align: center;
   width: 270px;
+  margin-bottom: -7px;
 }
 #sidebar_plugin_ui_wrapper .tool-panel {
   display: inline-block;
   margin-bottom: 5px;
+  margin-top: 10px;
 }
 #sidebar_plugin_ui_wrapper .xy-panel {
   display: inline-block;
@@ -61,6 +63,10 @@
 }
 #sidebar_plugin_ui_wrapper .motors-panel {
   margin-bottom: 5px;
+}
+#sidebar_plugin_ui_wrapper .print-control {
+  margin-top: -10px;
+  clear: both;
 }
 #sidebar_plugin_ui_wrapper h1 {
   display: block;
