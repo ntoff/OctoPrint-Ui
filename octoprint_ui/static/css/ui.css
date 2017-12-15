@@ -36,7 +36,7 @@
 #sidebar_plugin_ui_wrapper .motors-panel {
   width: 280px;
   float: left;
-  margin-left: 10px;
+  margin-left: 0px;
   margin-top: 2px;
 }
 #sidebar_plugin_ui_wrapper .flow-panel > div,
@@ -44,7 +44,7 @@
 #sidebar_plugin_ui_wrapper .fan-panel > div,
 #sidebar_plugin_ui_wrapper .motors-panel > div {
   text-align: center;
-  width: 45%;
+  width: 48%;
 }
 #sidebar_plugin_ui_wrapper .flow-panel > div > input,
 #sidebar_plugin_ui_wrapper .feed-panel > div > input,
@@ -56,6 +56,7 @@
 #sidebar_plugin_ui_wrapper .feed-panel-slider,
 #sidebar_plugin_ui_wrapper .fan-panel-slider,
 #sidebar_plugin_ui_wrapper .motors-panel-slider {
+  width: 40%;
   float: left;
 }
 #sidebar_plugin_ui_wrapper .motors-panel {
@@ -101,7 +102,7 @@
   float: left;
 }
 #sidebar_plugin_ui_wrapper .slider.slider-horizontal {
-  width: 95% !important;
+  width: 85% !important;
 }
 #sidebar_plugin_ui_wrapper .slider.slider-horizontal .slider-track {
   height: 10px;
