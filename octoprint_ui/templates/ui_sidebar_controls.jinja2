@@ -97,7 +97,7 @@
             <!--empty div placeholder maybe for a motors on button in the future-->
         </div>
         <div class="motors-panel">
-            <button class="btn btn-block" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendMotorsOffCommand() }">{{ _('Motors Off') }}</button>
+            <button class="btn btn-block" data-bind="enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), click: function() { $root.sendMotorsOffCommand() }">{{ _('Motors Off') }}</button>
          </div>
     </div>
     <div class="print-control">
