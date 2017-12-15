@@ -64,6 +64,9 @@
 #sidebar_plugin_ui_wrapper .motors-panel {
   margin-bottom: 5px;
 }
+#sidebar_plugin_ui_wrapper .motors-panel .btn-group > button {
+  width: 100%;
+}
 #sidebar_plugin_ui_wrapper .print-control {
   margin-top: -10px;
   clear: both;

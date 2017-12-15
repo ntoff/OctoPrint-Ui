@@ -91,12 +91,10 @@
         </div>
     </div>
     <!--Motors-->
-    <div class="motors-panel btn-group" >
-        <div class="motors-panel">
-            <button class="btn btn-block" data-bind="enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), click: function() { $root.sendMotorsOffCommand() }">{{ _('Motors Off') }}</button>    
-        </div>
-        <div class="fan-panel">
-            <button class="btn btn-block" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendFanOffCommand() }">{{ _('Fan Off') }}</button>
+    <div class="motors-panel" >
+        <div class="motors-panel btn-group">
+            <button class="btn btn-inline" data-bind="enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), click: function() { $root.sendMotorsOffCommand() }">{{ _('Motors Off') }}</button>
+            <button class="btn btn-inline" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendFanOffCommand() }">{{ _('Fan Off') }}</button>
          </div>
     </div>
     <div class="print-control">
