@@ -88,16 +88,15 @@
         </div>
         <div class="fan-panel">
             <button class="btn btn-block" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendFanCommand() }">{{ _('Fan:') }}<span data-bind="text: sideFanPerc()"></span></button>
-            <button class="btn btn-block" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendFanOffCommand() }">{{ _('Fan Off') }}</button>
         </div>
     </div>
     <!--Motors-->
     <div class="motors-panel btn-group" >
         <div class="motors-panel">
-            <!--empty div placeholder maybe for a motors on button in the future-->
+            <button class="btn btn-block" data-bind="enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), click: function() { $root.sendMotorsOffCommand() }">{{ _('Motors Off') }}</button>    
         </div>
-        <div class="motors-panel">
-            <button class="btn btn-block" data-bind="enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), click: function() { $root.sendMotorsOffCommand() }">{{ _('Motors Off') }}</button>
+        <div class="fan-panel">
+            <button class="btn btn-block" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendFanOffCommand() }">{{ _('Fan Off') }}</button>
          </div>
     </div>
     <div class="print-control">
