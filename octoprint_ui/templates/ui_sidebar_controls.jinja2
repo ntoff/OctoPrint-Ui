@@ -36,16 +36,33 @@
         <div class="distance">
             <div class="btn-group" data-toggle="buttons-radio" id="jog_distance1">
                 <!-- ko foreach: sideDistances1 -->
-                <button type="button" class="btn distance" data-bind="enable: $root.controlState.isOperational() && !$root.controlState.isPrinting() && $root.loginState.isUser(), text: $data, click: function() { $root.sideDistance($data) }, css: { active: $root.sideDistance() === $data }, attr: { id: 'control-distance' + $root.stripDistanceDecimal($data) }"></button>
+                <button title="Movement Distance" type="button" class="btn distance" data-bind="enable: $root.controlState.isOperational() && !$root.controlState.isPrinting() && $root.loginState.isUser(), text: $data, click: function() { $root.sideDistance($data) }, css: { active: $root.sideDistance() === $data }, attr: { id: 'control-distance' + $root.stripDistanceDecimal($data) }"></button>
                 <!-- /ko -->
             </div>
             <div class="btn-group" data-toggle="buttons-radio" id="jog_distance2">
                 <!-- ko foreach: sideDistances2 -->
-                <button type="button" class="btn distance" data-bind="enable: $root.controlState.isOperational() && !$root.controlState.isPrinting() && $root.loginState.isUser(), text: $data, click: function() { $root.sideDistance($data) }, css: { active: $root.sideDistance() === $data }, attr: { id: 'control-distance' + $root.stripDistanceDecimal($data) }"></button>
+                <button title="Movement Distance" type="button" class="btn distance" data-bind="enable: $root.controlState.isOperational() && !$root.controlState.isPrinting() && $root.loginState.isUser(), text: $data, click: function() { $root.sideDistance($data) }, css: { active: $root.sideDistance() === $data }, attr: { id: 'control-distance' + $root.stripDistanceDecimal($data) }"></button>
                 <!-- /ko -->
             </div>
         </div>
     </div>
+    <!--<h1> Filament </h1>-->
+    <div class="tool-panel">
+        <div class="input-append input-prepend">
+            <div class="btn-group">
+                <button class="btn" data-bind="attr: { title: 'Retract' }, enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), click: function() { $root.sendRetractCommand() }"><i class="fa fa-arrow-up"></i></button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown" data-bind="enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser()">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" data-bind="foreach: controlState.tools">
+                    <li><a href="#" data-bind="click: $root.sendSelectToolCommand, text: name(), enable: $root.controlState.isOperational() && !$root.controlState.isPrinting() && !$root.controlState.isPaused() && $root.loginState.isUser()"></a></li>
+                </ul>
+            </div>
+            <input type="number" class="input-mini text-right" data-bind="value: sideExtrusionAmount, enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), attr: {placeholder: settings.printer_defaultExtrusionLength}">
+            <span class="add-on">mm</span>
+            <button class="btn" data-bind="attr: { title: 'Extrude' }, enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), click: function() { $root.sendExtrudeCommand() }"><i class="fa fa-arrow-down"></i></button>
+        </div><!--/input append-->
+    </div> <!--/extruder-->
     <!--Speed-->
     <div class="feed-panel btn-group">
         <div class="feed-panel-slider">
@@ -83,31 +100,14 @@
             <button class="btn btn-block" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendMotorsOffCommand() }">{{ _('Motors Off') }}</button>
          </div>
     </div>
-    <!--<h1> Filament </h1>-->
-    <div class="tool-panel"> 
+    <div class="print-control">
         <h1> </h1>
-        <div class="input-append input-prepend">
-            <div class="btn-group">
-                <button class="btn" data-bind="attr: { title: 'Retract' }, enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), click: function() { $root.sendRetractCommand() }"><i class="fa fa-arrow-up"></i></button>
-                <button class="btn dropdown-toggle" data-toggle="dropdown" data-bind="enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser()">
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" data-bind="foreach: controlState.tools">
-                    <li><a href="#" data-bind="click: $root.sendSelectToolCommand, text: name(), enable: $root.controlState.isOperational() && !$root.controlState.isPrinting() && !$root.controlState.isPaused() && $root.loginState.isUser()"></a></li>
-                </ul>
-                
-            </div>
-            <input type="number" class="input-mini text-right" data-bind="value: sideExtrusionAmount, enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), attr: {placeholder: settings.printer_defaultExtrusionLength}">
-            <span class="add-on">mm</span>
-            <button class="btn" data-bind="attr: { title: 'Extrude' }, enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), click: function() { $root.sendExtrudeCommand() }"><i class="fa fa-arrow-down"></i></button>
-        </div><!--/input append-->
-    </div> <!--/extruder-->
-    <h1> </h1>
-    <!--print pause cancel-->
-    <div class="row-fluid print-control" style="display: none;" data-bind="visible: loginState.isUser">
-        <button class="btn btn-primary span4" data-bind="click: printerState.print, enable: printerState.enablePrint, css: {'btn-danger': printerState.isPaused()}, attr: {title: printerState.titlePrintButton}" id="job_print"><i class="fa" data-bind="css: {'fa-print': !printerState.isPaused(), 'fa-undo': printerState.isPaused()}"></i> <span data-bind="text: (printerState.isPaused() ? '{{ _('Restart') }}' : '{{ _('Print') }}')">{{ _('Print') }}</span></button>
-        <button class="btn span4" id="job_pause" data-bind="click: function() { printerState.isPaused() ? printerState.onlyResume() : printerState.onlyPause(); }, enable: printerState.enablePause, css: {active: printerState.isPaused()}, attr: {title: printerState.titlePauseButton}"><i class="fa" data-bind="css: {'fa-pause': !printerState.isPaused(), 'fa-play': printerState.isPaused()}"></i> <span data-bind="visible: !printerState.isPaused()">{{ _('Pause') }}</span><span data-bind="visible: printerState.isPaused()">{{ _('Resume') }}</span></button>
-        <button class="btn span4" id="job_cancel" data-bind="click: printerState.cancel, enable: printerState.enableCancel" title="{{ _('Cancels the print job') }}"><i class="fa fa-stop"></i> {{ _('Cancel') }}</button>
+        <!--print pause cancel-->
+        <div class="row-fluid print-control" style="display: none;" data-bind="visible: loginState.isUser">
+            <button class="btn btn-primary span4" data-bind="click: printerState.print, enable: printerState.enablePrint, css: {'btn-danger': printerState.isPaused()}, attr: {title: printerState.titlePrintButton}" id="job_print"><i class="fa" data-bind="css: {'fa-print': !printerState.isPaused(), 'fa-undo': printerState.isPaused()}"></i> <span data-bind="text: (printerState.isPaused() ? '{{ _('Restart') }}' : '{{ _('Print') }}')">{{ _('Print') }}</span></button>
+            <button class="btn span4" id="job_pause" data-bind="click: function() { printerState.isPaused() ? printerState.onlyResume() : printerState.onlyPause(); }, enable: printerState.enablePause, css: {active: printerState.isPaused()}, attr: {title: printerState.titlePauseButton}"><i class="fa" data-bind="css: {'fa-pause': !printerState.isPaused(), 'fa-play': printerState.isPaused()}"></i> <span data-bind="visible: !printerState.isPaused()">{{ _('Pause') }}</span><span data-bind="visible: printerState.isPaused()">{{ _('Resume') }}</span></button>
+            <button class="btn span4" id="job_cancel" data-bind="click: printerState.cancel, enable: printerState.enableCancel" title="{{ _('Cancels the print job') }}"><i class="fa fa-stop"></i> {{ _('Cancel') }}</button>
+        </div>
     </div>
 </div><!--/side-panel-container-->
 
