@@ -19,7 +19,7 @@
             </div>
         </div>
         <!-- Z jogging control panel -->
-        <div id="control-jog-z" class="z-panel">
+        <div id="side-control-jog-z" class="z-panel">
             <div>
                 <button id="control-zinc" class="btn box" data-bind="enable: controlState.isOperational() && !controlState.isPrinting() && loginState.isUser(), click: function() { $root.sendJogCommand('z',1) }"><i class="fa fa-arrow-up"></i></button>
             </div>
@@ -32,14 +32,14 @@
         </div>
     </div>
     <!--distances-->
-    <div class="distance-panel" >
-        <div class="distance">
-            <div class="btn-group" data-toggle="buttons-radio" id="jog_distance1">
+    <div class="side-distance-panel" >
+        <div class="side-distance">
+            <div class="btn-group" data-toggle="buttons-radio" id="jog_sideDistance1">
                 <!-- ko foreach: sideDistances1 -->
                 <button title="Movement Distance" type="button" class="btn distance" data-bind="enable: $root.controlState.isOperational() && !$root.controlState.isPrinting() && $root.loginState.isUser(), text: $data, click: function() { $root.sideDistance($data) }, css: { active: $root.sideDistance() === $data }, attr: { id: 'control-distance' + $root.stripDistanceDecimal($data) }"></button>
                 <!-- /ko -->
             </div>
-            <div class="btn-group" data-toggle="buttons-radio" id="jog_distance2">
+            <div class="btn-group" data-toggle="buttons-radio" id="jog_sideDistance2">
                 <!-- ko foreach: sideDistances2 -->
                 <button title="Movement Distance" type="button" class="btn distance" data-bind="enable: $root.controlState.isOperational() && !$root.controlState.isPrinting() && $root.loginState.isUser(), text: $data, click: function() { $root.sideDistance($data) }, css: { active: $root.sideDistance() === $data }, attr: { id: 'control-distance' + $root.stripDistanceDecimal($data) }"></button>
                 <!-- /ko -->

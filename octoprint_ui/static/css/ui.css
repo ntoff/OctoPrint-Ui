@@ -26,10 +26,10 @@
   top: -14px;
   left: 10px;
 }
-#sidebar_plugin_ui_wrapper .distance-panel {
+#sidebar_plugin_ui_wrapper .side-distance-panel {
   margin-bottom: 5px;
 }
-#sidebar_plugin_ui_wrapper .distance-panel > div {
+#sidebar_plugin_ui_wrapper .side-distance-panel > div {
   text-align: center;
 }
 #sidebar_plugin_ui_wrapper .flow-panel,
@@ -139,7 +139,7 @@
 #sidebar_plugin_ui_wrapper #distance-selector {
   width: 171px;
 }
-#sidebar_plugin_ui_wrapper #jog_distance1 {
+#sidebar_plugin_ui_wrapper #jog_sideDistance1 {
   display: inline-block;
   width: 171px;
   padding-left: 0px;
@@ -147,7 +147,7 @@
   margin-left: 0px;
   margin-bottom: 3px;
 }
-#sidebar_plugin_ui_wrapper #jog_distance2 {
+#sidebar_plugin_ui_wrapper #jog_sideDistance2 {
   display: inline-block;
   width: 171px;
   padding-top: 0px;
