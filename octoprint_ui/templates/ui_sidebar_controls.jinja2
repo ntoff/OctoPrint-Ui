@@ -66,7 +66,7 @@
     <!--Speed-->
     <div class="feed-panel btn-group">
         <div class="feed-panel-slider">
-            <input type="number" data-bind="enable: controlState.isOperational() && loginState.isUser(), slider: {min: 50, max: 150, step: 1, value: sidefeedRate, tooltip: 'hide'}">
+            <input type="number" data-bind="enable: controlState.isOperational() && loginState.isUser(), slider: {min: 25, max: 200, step: 1, value: sidefeedRate, tooltip: 'hide'}">
         </div>
         <div class="feed-panel">
             <button class="btn btn-block" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendFeedRateCommand() }">{{ _('Feed:') }}<span data-bind="text: sidefeedRate() + '%'"></span></button>
