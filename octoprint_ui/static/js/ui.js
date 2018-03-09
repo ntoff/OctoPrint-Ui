@@ -69,9 +69,11 @@ $(function() {
         self.resetPercentage = function(valueToReset){
             if (valueToReset === "feedRate") {
                 self.sidefeedRate(100);
+                OctoPrint.control.sendGcode("M220 S" + self.sidefeedRate());
             }
             else if (valueToReset === 'flowRate') {
                 self.sideflowRate(100);
+                OctoPrint.control.sendGcode("M221 S" + self.sideflowRate());
             }
         }
         self.sendJogCommand = function (axis, multiplier, distance) {
