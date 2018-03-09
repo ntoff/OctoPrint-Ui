@@ -66,6 +66,14 @@ $(function() {
         self.sendFlowRateCommand = function(){
             OctoPrint.control.sendGcode("M221 S" + self.sideflowRate());
         }
+        self.resetPercentage = function(valueToReset){
+            if (valueToReset === "feedRate") {
+                self.sidefeedRate(100);
+            }
+            else if (valueToReset === 'flowRate') {
+                self.sideflowRate(100);
+            }
+        }
         self.sendJogCommand = function (axis, multiplier, distance) {
             if (typeof distance === "undefined")
                 distance = self.sideDistance();

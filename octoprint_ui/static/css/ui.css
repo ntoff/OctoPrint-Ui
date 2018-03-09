@@ -1,6 +1,13 @@
 #sidebar_plugin_ui_wrapper #sidebar_plugin_ui {
   overflow: visible;
 }
+#sidebar_plugin_ui_wrapper .btn-reset-rate {
+  text-align: center;
+  width: 30%;
+}
+#sidebar_plugin_ui_wrapper .btn-rate {
+  width: 70%;
+}
 #sidebar_plugin_ui_wrapper .side-panel-container {
   text-align: center;
   width: 270px;

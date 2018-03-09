@@ -68,17 +68,19 @@
         <div class="feed-panel-slider">
             <input type="number" data-bind="enable: controlState.isOperational() && loginState.isUser(), slider: {min: 25, max: 150, step: 1, value: sidefeedRate, tooltip: 'hide'}">
         </div>
-        <div class="feed-panel">
-            <button class="btn btn-block" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendFeedRateCommand() }">{{ _('Feed:') }}<span data-bind="text: sidefeedRate() + '%'"></span></button>
+        <div class="feed-panel btn-group">
+            <button class="btn btn-rate" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendFeedRateCommand() }">{{ _('Feed:') }}<span data-bind="text: sidefeedRate() + '%'"></span></button>
+            <button class="btn btn-reset-rate" data-bind="attr: { title: 'Reset to 100%' }, enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.resetPercentage('feedRate') }"><i class="fa fa-undo"></i></button>
         </div>
     </div>
-    <!--Feed-->
+    <!--Flow-->
     <div class="flow-panel btn-group" >
         <div class="flow-panel-slider">
             <input type="number" data-bind="enable: controlState.isOperational() && loginState.isUser(), slider: {min: 50, max: 150, step: 1, value: sideflowRate, tooltip: 'hide'}">
         </div>
-        <div class="flow-panel">
-            <button class="btn btn-block" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendFlowRateCommand() }">{{ _('Flow:') }}<span data-bind="text: sideflowRate() + '%'"></span></button>
+        <div class="flow-panel btn-group">
+            <button class="btn btn-rate" data-bind="enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.sendFlowRateCommand() }">{{ _('Flow:') }}<span data-bind="text: sideflowRate() + '%'"></span></button>
+            <button class="btn btn-reset-rate" data-bind="attr: { title: 'Reset to 100%' }, enable: controlState.isOperational() && loginState.isUser(), click: function() { $root.resetPercentage('flowRate') }"><i class="fa fa-undo"></i></button>
         </div>
     </div>
     <!--Fan-->
